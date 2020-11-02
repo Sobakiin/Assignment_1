@@ -1,0 +1,5 @@
+.grid_container{
+    display:grid-inline;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 5% 85% 10%;
+}
