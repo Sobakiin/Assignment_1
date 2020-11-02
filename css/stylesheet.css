@@ -29,3 +29,18 @@
     background-color: cornflowerblue ;
 }
 
+.grid_second{
+    grid-template-rows: 1fr 2fr 1fr;
+    gap: 5%;
+    display: grid;
+}
+
+.button_line_1{
+    grid-row: 1/2;  
+}
+.button_line_2{
+    grid-row: 3;
+}
+.text_box{
+    grid-row: 2/3;
+}
