@@ -31,17 +31,26 @@
 
 .grid_second{
     grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 5%;
     display: grid;
+    align-content: center;
 }
 
 .button_line_1{
     grid-row: 1/2;  
+    grid-column:1/4;
+    display: flex;
 }
 .button_line_2{
+    grid-column: 1/4;
     grid-row: 3;
+    display: flex;
 }
 .text_box{
+    grid-column: 2/3;
     grid-row: 2/3;
     background-color: whitesmoke;
+    border-color: gray;
+    width: 75%;
 }
