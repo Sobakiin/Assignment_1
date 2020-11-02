@@ -43,4 +43,5 @@
 }
 .text_box{
     grid-row: 2/3;
+    background-color: whitesmoke;
 }
