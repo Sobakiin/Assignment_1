@@ -71,7 +71,7 @@ function noteWriting(){
     noteStorage.push(text)
 
     link.appendChild(document.createTextNode(`Note ${count+1}`))
-    link.src = `#note-${count}`
+    link.href = `#note-${count}`
 
     
     item.appendChild(link)
