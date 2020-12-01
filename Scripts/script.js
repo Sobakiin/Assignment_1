@@ -8,18 +8,7 @@ var textBox = document.querySelector(".text-box")
 var noteList = document.querySelector(".note-holder")
 }
 
-function reformation(bool){
-    if(bool === 0){
-        saveBtn.style.visibility = "hidden"
-        cancelBtn.style.visibility = "hidden"
-        textBox.style.visibility = "hidden"
-    }
-    if(bool===1){
-        saveBtn.style.visibility = "visible"
-        cancelBtn.style.visibility = "visible"
-        textBox.style.visibility = "visible"
-    }
-}
+
 
 reformation(0)
 let noteStorage = []
@@ -27,6 +16,8 @@ let count = 0
 
 themeBtn.addEventListener("click",darkTheme)
 noteBtn.addEventListener("click",startNote)
+cancelBtn.addEventListener("click",cancelNote)
+saveBtn.addEventListener("click",noteWriting)
 
 function darkTheme(){
     let backdrop = document.querySelector("body")
@@ -43,7 +34,6 @@ function darkTheme(){
     themeBtn.innerHTML= "Light Mode"
     themeBtn.style.color="black"
 }
-
 function lightTheme(){
     let backdrop = document.querySelector("body")
     backdrop.style.backgroundColor="#ebede4"
@@ -59,25 +49,41 @@ function lightTheme(){
     themeBtn.innerHTML= "Dark Mode"
     themeBtn.style.color="white"
 }
-
+function reformation(bool){
+    if(bool === 0){
+        saveBtn.style.visibility = "hidden"
+        cancelBtn.style.visibility = "hidden"
+        textBox.style.visibility = "hidden"
+    }
+    if(bool===1){
+        saveBtn.style.visibility = "visible"
+        cancelBtn.style.visibility = "visible"
+        textBox.style.visibility = "visible"
+    }
+}
 function noteWriting(){
     
     let item = document.createElement("li")
     let link = document.createElement("a")
-    
-    let  text = textbox.innerHTML
+
+    let text = document.createTextNode(textBox.value)
+    text.id = `#note-${count}`
     noteStorage.push(text)
 
-    link.appendChild(document.createTextNode(`Note ${count}`))
-    link.src = `#note-${count+1}`
+    link.appendChild(document.createTextNode(`Note ${count+1}`))
+    link.src = `#note-${count}`
+
+    
     item.appendChild(link)
     noteList.appendChild(item)
 
+    textBox.value=" "
+
     count++
-    
+    reformation(0)
 }
 
 function startNote(){
-console.log("*ding*")
 reformation(1)
 }
+function cancelNote(){ reformation(0)}
