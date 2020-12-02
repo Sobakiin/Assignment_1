@@ -25,8 +25,12 @@ function darkTheme(){
     saveBtn.style.backgroundColor="darkgrey"
     noteBtn.style.backgroundColor="darkgrey" 
     cancelBtn.style.backgroundColor="darkgrey"
-    document.querySelector(".text-box").style.backgroundColor="darkslategrey"
-    document.querySelector(".text-box").style.color="white"
+    textBox.style.backgroundColor="darkslategrey"
+    textBox.style.color="white"
+    if (document.querySelector("p.text-box")!==null){
+        document.querySelector(".text-box").style.backgroundColor="darkslategrey"
+        document.querySelector(".text-box").style.color="white"
+    }
 
     themeBtn.removeEventListener("click",darkTheme)
     themeBtn.addEventListener("click",lightTheme)
@@ -40,8 +44,12 @@ function lightTheme(){
     saveBtn.style.backgroundColor="green"
     noteBtn.style.backgroundColor="azure" 
     cancelBtn.style.backgroundColor="lightcoral"
-    document.querySelector(".text-box").style.backgroundColor="white"
-    document.querySelector(".text-box").style.color="black"
+    textBox.style.backgroundColor="white"
+    textBox.style.color="black"
+    if (document.querySelector("p.text-box")!==null){
+        document.querySelector(".text-box").style.backgroundColor="white"
+        document.querySelector(".text-box").style.color="black"
+    }
     
     themeBtn.removeEventListener("click",lightTheme)
     themeBtn.addEventListener("click",darkTheme)
@@ -53,7 +61,7 @@ function reformation(bool){
     if(bool === 0){
         saveBtn.style.visibility = "hidden"
         cancelBtn.style.visibility = "hidden"
-        writingArea.removeChild(textBox)
+        writingArea.removeChild(document.querySelector(".text-box"))
     }
     if(bool===1){
         saveBtn.style.visibility = "visible"
@@ -86,35 +94,37 @@ function noteWriting(){
 
 function startNote(){
     reformation(1)
-    //textBox.placeholder = "This is a placeholder"
 }
 function cancelNote(){ 
     reformation(0)
     textBox.value=""
 }
 function runThatBack(eve){
-    if(saveBtn.style.visibility === "visible"){ reformation(0) }
-    console.log("check")
-
+    
+    if(saveBtn.style.visibility === "visible" 
+        || document.querySelector(".text-box")!==null)
+    { reformation(0) }
     let trigger = eve.target.id
     let note = document.createElement("p")
-    note.classList="text-box"
+    
+    note.classList = "text-box"
     
     for(let i of noteStorage){
-        console.log(i[1])
-        //console.log(String(eve.target.id))
         if(String(trigger) === i[1]){
-             
             note.appendChild(document.createTextNode(i[0]))
         }
     }
-
-    writingArea.appendChild(note)
+    note.style = textBox.style
     
+    block = writingArea.appendChild(note)
+    block.style.color=textBox.style.color
+    block.style.backgroundColor=textBox.style.backgroundColor
+
     noteBtn.addEventListener("click", returnTextArea)
+    
 }
 function returnTextArea(){
-    noteBtn.removeEventListener("click", returnTextArea)
+    
     writingArea.removeChild(document.querySelector(".text-box"))
-    writingArea.appendChild(textBox)
+    noteBtn.removeEventListener("click", returnTextArea)
 }
