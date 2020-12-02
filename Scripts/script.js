@@ -25,8 +25,8 @@ function darkTheme(){
     saveBtn.style.backgroundColor="darkgrey"
     noteBtn.style.backgroundColor="darkgrey" 
     cancelBtn.style.backgroundColor="darkgrey"
-    textBox.style.backgroundColor="black"
-    textBox.style.color="white"
+    document.querySelector(".text-box").style.backgroundColor="darkslategrey"
+    document.querySelector(".text-box").style.color="white"
 
     themeBtn.removeEventListener("click",darkTheme)
     themeBtn.addEventListener("click",lightTheme)
@@ -40,8 +40,8 @@ function lightTheme(){
     saveBtn.style.backgroundColor="green"
     noteBtn.style.backgroundColor="azure" 
     cancelBtn.style.backgroundColor="lightcoral"
-    textBox.style.backgroundColor="white"
-    textBox.style.color="black"
+    document.querySelector(".text-box").style.backgroundColor="white"
+    document.querySelector(".text-box").style.color="black"
     
     themeBtn.removeEventListener("click",lightTheme)
     themeBtn.addEventListener("click",darkTheme)
@@ -92,7 +92,6 @@ function cancelNote(){
     reformation(0)
     textBox.value=""
 }
-
 function runThatBack(eve){
     if(saveBtn.style.visibility === "visible"){ reformation(0) }
     console.log("check")
@@ -111,7 +110,7 @@ function runThatBack(eve){
     }
 
     writingArea.appendChild(note)
-
+    
     noteBtn.addEventListener("click", returnTextArea)
 }
 function returnTextArea(){
