@@ -22,6 +22,9 @@ saveBtn.addEventListener("click",noteWriting)
 function darkTheme(){
     let backdrop = document.querySelector("body")
     backdrop.style.backgroundColor="#2d2932"
+    document.querySelector("aside").style.backgroundColor="#403737"
+    writingArea.style.backgroundColor="#374040"
+    document.querySelector("aside").style.color="#afb2b2"
     saveBtn.style.backgroundColor="darkgrey"
     noteBtn.style.backgroundColor="darkgrey" 
     cancelBtn.style.backgroundColor="darkgrey"
@@ -41,6 +44,9 @@ function darkTheme(){
 function lightTheme(){
     let backdrop = document.querySelector("body")
     backdrop.style.backgroundColor="#ebede4"
+    document.querySelector("aside").style.backgroundColor="blueviolet"
+    writingArea.style.backgroundColor="cornflowerblue"
+    document.querySelector("aside").style.color="black"
     saveBtn.style.backgroundColor="green"
     noteBtn.style.backgroundColor="azure" 
     cancelBtn.style.backgroundColor="lightcoral"
